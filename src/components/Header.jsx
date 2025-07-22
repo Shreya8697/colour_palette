@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import logo1 from "../assets/logo1.png";
 
 const Header = () => {
   return (
@@ -8,19 +9,25 @@ const Header = () => {
         <div className="flex justify-between h-16 items-center">
           {/* Logo/Brand */}
           <div className="flex-shrink-0 flex items-center">
-            <Link 
-              to="/" 
-              className="text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-200"
+            <Link
+              to="/"
+              className="flex items-center text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-200"
             >
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                DesignDev Toolkit
-              </span>
+              <img
+                src={logo1}
+                alt="Logo"
+                className="h-30 w-28 mr-5 object-contain"
+              />
+
+              {/* <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          Colour Palette
+        </span> */}
             </Link>
           </div>
 
           {/* Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <NavLink to="/skin-tone-palette" label="Skin Tone" />
+            <NavLink  to="/skin-tone-palette" label="Skin Tone" />
             <NavLink to="/hex-palette" label="HEX Creator" />
             <NavLink to="/code-compiler" label="Code Compiler" />
           </nav>
@@ -33,8 +40,8 @@ const Header = () => {
 };
 
 const NavLink = ({ to, label }) => (
-  <Link 
-    to={to} 
+  <Link
+    to={to}
     className="
       relative px-3 py-2 text-sm font-medium text-gray-700 
       hover:text-blue-600 transition-colors duration-200
