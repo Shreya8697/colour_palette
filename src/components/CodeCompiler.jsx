@@ -100,10 +100,9 @@ const CodeCompiler = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600/20 to-pink-600/20 py-10 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-600/20 to-pink-600/20 py-6 sm:py-10 px-3 sm:px-4">
       {/* Floating background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        
         <div 
           className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full opacity-10"
           style={{ animation: 'float 6s ease-in-out infinite' }}
@@ -119,28 +118,28 @@ const CodeCompiler = () => {
       </div>
 
       <div className="relative max-w-6xl mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-3xl shadow-xl"></div>
-        <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10 rounded-xl sm:rounded-3xl shadow-xl"></div>
+        <div className="relative bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-3xl shadow-lg sm:shadow-2xl overflow-hidden p-4 sm:p-6 md:p-8">
           <Toaster position="top-right" />
           
-          <div className="flex justify-between items-start mb-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start mb-4 sm:mb-6 gap-4">
             <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">Online Code Compiler</h2>
-              <p className="text-gray-600 max-w-lg">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-1 sm:mb-2">Online Code Compiler</h2>
+              <p className="text-sm sm:text-base text-gray-600 max-w-lg">
                 Write, execute, and test {language === 'javascript' ? 'JavaScript' : 'Python'} code in your browser
               </p>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={() => setEditorTheme(prev => prev === 'vs-dark' ? 'light' : 'vs-dark')}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${editorTheme === 'vs-dark' ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all ${editorTheme === 'vs-dark' ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
               >
-                {editorTheme === 'vs-dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+                {editorTheme === 'vs-dark' ? '☀️ Light' : '🌙 Dark'}
               </button>
               <select
                 value={fontSize}
                 onChange={(e) => setFontSize(Number(e.target.value))}
-                className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium"
+                className="px-2 py-1.5 sm:px-3 sm:py-2 bg-gray-100 hover:bg-gray-200 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium"
               >
                 {[12, 14, 16, 18, 20].map(size => (
                   <option key={size} value={size}>{size}px</option>
@@ -149,57 +148,57 @@ const CodeCompiler = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8">
             {/* Editor Column */}
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex space-x-3">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 sm:mb-4 gap-2">
+                <div className="flex space-x-2 sm:space-x-3 w-full sm:w-auto">
                   <button
                     onClick={() => setLanguage('javascript')}
-                    className={`flex items-center px-4 py-2 rounded-xl transition-all ${language === 'javascript' ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700' : 'bg-gray-100 hover:bg-gray-200'}`}
+                    className={`flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm transition-all ${language === 'javascript' ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700' : 'bg-gray-100 hover:bg-gray-200'}`}
                   >
-                    <SiJavascript className="mr-2" /> JavaScript
+                    <SiJavascript className="mr-1 sm:mr-2" /> JS
                   </button>
                   <button
                     onClick={() => setLanguage('python')}
-                    className={`flex items-center px-4 py-2 rounded-xl transition-all ${language === 'python' ? 'bg-green-600 text-white shadow-md hover:bg-green-700' : 'bg-gray-100 hover:bg-gray-200'}`}
+                    className={`flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm transition-all ${language === 'python' ? 'bg-green-600 text-white shadow-md hover:bg-green-700' : 'bg-gray-100 hover:bg-gray-200'}`}
                   >
-                    <SiPython className="mr-2" /> Python
+                    <SiPython className="mr-1 sm:mr-2" /> Python
                   </button>
                 </div>
-                <div className="flex space-x-2">
+                <div className="flex space-x-1 sm:space-x-2 w-full sm:w-auto justify-end">
                   <button
                     onClick={saveCode}
-                    className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+                    className="p-1.5 sm:p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
                     title="Save"
                   >
-                    <FiSave size={18} />
+                    <FiSave size={16} />
                   </button>
                   <button
                     onClick={downloadCode}
-                    className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+                    className="p-1.5 sm:p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
                     title="Download"
                   >
-                    <FiDownload size={18} />
+                    <FiDownload size={16} />
                   </button>
                   <button
                     onClick={copyCode}
-                    className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+                    className="p-1.5 sm:p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
                     title="Copy"
                   >
-                    <FiCopy size={18} />
+                    <FiCopy size={16} />
                   </button>
                   <button
                     onClick={resetCode}
-                    className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
+                    className="p-1.5 sm:p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
                     title="Reset"
                   >
-                    <FiAlertCircle size={18} />
+                    <FiAlertCircle size={16} />
                   </button>
                 </div>
               </div>
 
-              <div className="h-[400px] border border-gray-200 rounded-xl overflow-hidden shadow-inner">
+              <div className="h-[300px] sm:h-[350px] md:h-[400px] border border-gray-200 rounded-lg sm:rounded-xl overflow-hidden shadow-inner">
                 <Editor
                   height="100%"
                   language={language}
@@ -217,17 +216,17 @@ const CodeCompiler = () => {
                 />
               </div>
 
-              <div className="mt-6 flex justify-between items-center">
+              <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
                 <button
                   onClick={runCode}
                   disabled={isLoading}
-                  className={`flex items-center px-6 py-3 rounded-xl text-white font-medium transition-all ${isLoading ? 'bg-gray-400' : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg'}`}
+                  className={`flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base text-white font-medium transition-all w-full sm:w-auto justify-center ${isLoading ? 'bg-gray-400' : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg'}`}
                 >
                   <FiPlay className="mr-2" />
                   {isLoading ? 'Running...' : 'Run Code'}
                 </button>
                 {executionTime && (
-                  <span className="text-sm text-gray-500 font-medium">
+                  <span className="text-xs sm:text-sm text-gray-500 font-medium">
                     Executed in {executionTime}s
                   </span>
                 )}
@@ -236,60 +235,60 @@ const CodeCompiler = () => {
 
             {/* Output Column */}
             <div>
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-semibold text-gray-800 flex items-center">
+              <div className="flex justify-between items-center mb-3 sm:mb-4">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 flex items-center">
                   <FiTerminal className="mr-2 text-blue-600" /> Output
                 </h3>
                 <button
                   onClick={copyOutput}
-                  className="flex items-center text-sm text-gray-500 hover:text-blue-600 hover:bg-blue-50 px-3 py-1 rounded-lg transition-all"
+                  className="flex items-center text-xs sm:text-sm text-gray-500 hover:text-blue-600 hover:bg-blue-50 px-2 py-1 sm:px-3 sm:py-1 rounded-lg transition-all"
                 >
-                  <FiCopy className="mr-1" /> Copy Output
+                  <FiCopy className="mr-1" /> Copy
                 </button>
               </div>
 
-              <div className="h-[400px] bg-gray-50 p-4 rounded-xl border border-gray-200 overflow-auto shadow-inner">
+              <div className="h-[300px] sm:h-[350px] md:h-[400px] bg-gray-50 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-gray-200 overflow-auto shadow-inner">
                 {output ? (
-                  <pre className="whitespace-pre-wrap font-mono text-sm">{output}</pre>
+                  <pre className="whitespace-pre-wrap font-mono text-xs sm:text-sm">{output}</pre>
                 ) : (
-                  <div className="h-full flex items-center justify-center text-gray-400">
+                  <div className="h-full flex items-center justify-center text-gray-400 text-sm sm:text-base">
                     {isLoading ? 'Executing code...' : 'Output will appear here'}
                   </div>
                 )}
               </div>
 
-              <div className="mt-6 bg-gradient-to-r from-blue-50 to-indigo-50 p-5 rounded-xl border border-blue-100">
-                <h4 className="font-semibold text-blue-800 mb-3 flex items-center">
+              <div className="mt-4 sm:mt-6 bg-gradient-to-r from-blue-50 to-indigo-50 p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl border border-blue-100">
+                <h4 className="font-semibold text-blue-800 mb-2 sm:mb-3 flex items-center text-sm sm:text-base">
                   <FiCode className="mr-2 text-blue-600" /> Quick Reference
                 </h4>
-                <div className="text-sm text-blue-700 space-y-2">
+                <div className="text-xs sm:text-sm text-blue-700 space-y-1 sm:space-y-2">
                   {language === 'javascript' ? (
                     <>
                       <div className="flex items-baseline">
-                        <code className="bg-blue-100 px-2 py-1 rounded mr-2">console.log()</code>
+                        <code className="bg-blue-100 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded mr-1 sm:mr-2">console.log()</code>
                         <span>Print to output</span>
                       </div>
                       <div className="flex items-baseline">
-                        <code className="bg-blue-100 px-2 py-1 rounded mr-2">setTimeout(fn, ms)</code>
+                        <code className="bg-blue-100 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded mr-1 sm:mr-2">setTimeout()</code>
                         <span>Delayed execution</span>
                       </div>
                       <div className="flex items-baseline">
-                        <code className="bg-blue-100 px-2 py-1 rounded mr-2">ES6+</code>
+                        <code className="bg-blue-100 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded mr-1 sm:mr-2">ES6+</code>
                         <span>Modern JavaScript supported</span>
                       </div>
                     </>
                   ) : (
                     <>
                       <div className="flex items-baseline">
-                        <code className="bg-blue-100 px-2 py-1 rounded mr-2">print()</code>
+                        <code className="bg-blue-100 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded mr-1 sm:mr-2">print()</code>
                         <span>Print to output</span>
                       </div>
                       <div className="flex items-baseline">
-                        <code className="bg-blue-100 px-2 py-1 rounded mr-2">Python 3.x</code>
+                        <code className="bg-blue-100 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded mr-1 sm:mr-2">Python 3.x</code>
                         <span>Latest syntax supported</span>
                       </div>
                       <div className="flex items-baseline">
-                        <code className="bg-blue-100 px-2 py-1 rounded mr-2">Standard Library</code>
+                        <code className="bg-blue-100 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded mr-1 sm:mr-2">Standard Library</code>
                         <span>Built-in modules available</span>
                       </div>
                     </>

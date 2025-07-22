@@ -24,13 +24,14 @@ const Header = () => {
               <img
                 src={logo1}
                 alt="Logo"
-                className="h-20 w-20 mr-4 object-contain"
+                className="h-30 w-28 mr-4 object-contain"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
+            <NavLink to="/" label="Home" />
             <NavLink to="/skin-tone-palette" label="Skin Tone" />
             <NavLink to="/hex-palette" label="HEX Creator" />
             <NavLink to="/code-compiler" label="Code Compiler" />
@@ -72,7 +73,8 @@ const Header = () => {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white bg-opacity-90 px-4 pt-2 pb-4 shadow-sm backdrop-blur-sm">
+        <div className="md:hidden bg-white bg-opacity-50 px-4 pt-2 pb-4 shadow-sm backdrop-blur-sm">
+          <MobileNavLink to="/" label="Home" />
           <MobileNavLink to="/skin-tone-palette" label="Skin Tone" />
           <MobileNavLink to="/hex-palette" label="HEX Creator" />
           <MobileNavLink to="/code-compiler" label="Code Compiler" />
